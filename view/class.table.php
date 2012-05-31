@@ -56,7 +56,6 @@ class HTML_Table {
 
 }
 
-
 class HTML_TableRow {
     function __construct($klass = NULL, $attr_ar = array()) {
         $this->klass = $klass;

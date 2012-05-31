@@ -12,7 +12,27 @@ class vista {
 
     public function get_content(){
         $output = $this->header;
-        $output .= exec('whoami');
+        
+        $db = new MySQL();
+        
+        $consulta = $db->consulta("SELECT * FROM users");
+        
+        //check if we have records
+        if($db->num_rows($consulta)>0){
+        	
+        	$table = new HTML_Table(null, null, 1, 5, 5 );
+        
+        	while($resultados = $db->fetch_array($consulta)){
+        	
+        		//add row
+        		$table ->addRow();     	
+        		$table -> addCell($resultados ['id']);//add cell id
+        		$table -> addCell($resultados ['nombre']);	//add cell nombre
+        	}
+        	
+        	$output .=  $table->display();
+        }
+    
         $output .= $this->footer;
         return $output;
     }

@@ -1,18 +1,14 @@
 <?php
-
+// incluir el global para cargar todas las configuraciones
 include("globals.php");
+/*
+print '<pre>'; //dar forma
+print_r ($_SERVER); // imprimir lo que tiene el server
+print '</pre>';
 
-$db = new MySQL();
+exit; //terminar ejecucion
+*/
 
-$consulta = $db->consulta("SELECT * FROM users");
+$view =  new vista();
 
-if($db->num_rows($consulta)>0){
-  while($resultados = $db->fetch_array($consulta)){
-   
- }
-}
-
-
-$foo =  new vista();
-
-echo $foo->get_content();
+echo $view -> get_content();
